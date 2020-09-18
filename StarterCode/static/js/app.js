@@ -17,16 +17,15 @@ function init() {
 
 init()
 
-d3.select('#selDataset').on("click", handleSelect);
+d3.select('#selDataset').on("change", optionChanged);
 
-function handleSelect() {
+function optionChanged() {
     let sub = d3.select('#selDataset').node().value
 
     d3.event.preventDefault();
     d3.json('samples.json').then(data => {
         var demo = data.metadata.filter(obj => obj.id == sub)[0];
         console.log(demo)
-        // var select = d3.select('#selDataset');
         var info = d3.select('#sample-metadata');
         info.html("")
 
