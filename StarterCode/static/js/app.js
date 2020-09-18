@@ -2,9 +2,6 @@ function init() {
 
     d3.json('samples.json').then(data => {
         var names = data.names;
-        // var demo = data.metadata.filter(obj => obj.id = sub)[0] ;
-        // console.log(demo)
-        // console.log(names);
         var select = d3.select('#selDataset');
 
         d3.select("#selDataset").node().value = "";
