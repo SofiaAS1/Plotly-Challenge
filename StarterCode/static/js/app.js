@@ -69,10 +69,10 @@ function HoriBar() {
         title: `${hori.id}'s Top Ten Belly Button Microbes`,
         hovermode: 'closest',
         margin: {
-            l:50,
-            r:50,
-            t:50,
-            b:50,
+            l:75,
+            r:75,
+            t:75,
+            b:75,
             }
         }
         Plotly.newPlot("bar", data, layout);
