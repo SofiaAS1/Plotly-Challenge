@@ -66,7 +66,7 @@ function HoriBar() {
         var data = [trace1];
 
         var layout = {
-        title: `${hori.id}'s Top Ten Belly Button Microbes`,
+        title: `Test Subject ID No. ${hori.id}'s Top 10 Belly Button Microbes`,
         hovermode: 'closest',
         margin: {
             l:75,
