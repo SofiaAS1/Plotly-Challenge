@@ -23,7 +23,7 @@ d3.select('#selDataset').on('change', HoriBar);
 function optionChanged() {
     let sub = d3.select('#selDataset').node().value
 
-    d3.event.preventDefault();
+    // d3.event.preventDefault();
 
     d3.json('samples.json').then(data => {
         var demo = data.metadata.filter(obj => obj.id == sub)[0];
@@ -45,7 +45,7 @@ function HoriBar() {
 
     d3.json('samples.json').then(data => {
         var hori = data.samples.filter(obj => obj.id == sub)[0];
-        // console.log(hori)
+        console.log(hori)
         var hor = d3.select('#bar');
         hor.html("")
 
@@ -73,8 +73,10 @@ function HoriBar() {
             b:50,
             }
         }
-        }
         Plotly.newPlot("bar", data, layout);
+        })
+
+        
     }
     
 
