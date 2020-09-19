@@ -23,11 +23,8 @@ d3.select('#selDataset').on('change', HoriBar);
 function optionChanged() {
     let sub = d3.select('#selDataset').node().value
 
-    // d3.event.preventDefault();
-
     d3.json('samples.json').then(data => {
         var demo = data.metadata.filter(obj => obj.id == sub)[0];
-        console.log(demo)
         var info = d3.select('#sample-metadata');
         info.html("")
 
@@ -45,26 +42,23 @@ function HoriBar() {
 
     d3.json('samples.json').then(data => {
         var hori = data.samples.filter(obj => obj.id == sub)[0];
-        console.log(hori)
         var hor = d3.select('#bar');
         hor.html("")
 
         var ids = hori.otu_ids;
-        var values = hori.sample_values
-        // var svaluess = svalues.sort((a, b) => b.sample_values - a.sample_values);
-        // var valuess = svaluess.slice(0,10);
-        // var values = valuess.reverse();
-        var otu_labels = hori.otu_labels;
+        var sample_values = hori.sample_values;
+        var values =sample_values.slice(0, 10).reverse();
         var labels = ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
+        var otu_labels = hori.otu_labels;
+        var hover = otu_labels.slice(0, 10).reverse()
+
+        // console.log(hover)
 
         var trace1 = {
-        x: values.slice(0, 10).reverse(),
-        // y: values.map(object => object.otu_ids),
+        x: values,
         y: labels,
-        // text: values.map(object => object.otu_ids),
-        text: ids,
-        hover: labels,
-        // hover: values.map(object => object.otu_labels),
+        text: hover,
+        hoverinfo: 'text',
         type: "bar",
         orientation: "h",
         }
@@ -73,8 +67,7 @@ function HoriBar() {
 
         var layout = {
         title: `${hori.id}'s Top Ten Belly Button Microbes`,
-        // xaxis: { title:"placeholder"},
-        // yaxis: { title:"OTU"},
+        hovermode: 'closest',
         margin: {
             l:50,
             r:50,
