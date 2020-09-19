@@ -49,18 +49,22 @@ function HoriBar() {
         var hor = d3.select('#bar');
         hor.html("")
 
-        // var ids = hori.otu_ids;
-        var svalues = hori.sample_values
-        var svaluess = svalues.sort((a, b) => b.sample_values - a.sample_values);
-        var valuess = svaluess.slice(0,10);
-        var values = valuess.reverse();
-        // var labels = hori.otu_labels;
+        var ids = hori.otu_ids;
+        var values = hori.sample_values
+        // var svaluess = svalues.sort((a, b) => b.sample_values - a.sample_values);
+        // var valuess = svaluess.slice(0,10);
+        // var values = valuess.reverse();
+        var otu_labels = hori.otu_labels;
+        var labels = ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
 
         var trace1 = {
-        x: values.map(object => object.sample_values),
-        y: values.map(object => object.otu_ids),
-        text: values.map(object => object.otu_ids),
-        hover: values.map(object => object.otu_labels),
+        x: values.slice(0, 10).reverse(),
+        // y: values.map(object => object.otu_ids),
+        y: labels,
+        // text: values.map(object => object.otu_ids),
+        text: ids,
+        hover: labels,
+        // hover: values.map(object => object.otu_labels),
         type: "bar",
         orientation: "h",
         }
@@ -69,8 +73,8 @@ function HoriBar() {
 
         var layout = {
         title: `${hori.id}'s Top Ten Belly Button Microbes`,
-        xaxis: { title:"placeholder"},
-        yaxis: { title:"OTU"},
+        // xaxis: { title:"placeholder"},
+        // yaxis: { title:"OTU"},
         margin: {
             l:50,
             r:50,
