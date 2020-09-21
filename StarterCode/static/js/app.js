@@ -23,6 +23,8 @@ d3.select('#selDataset').on("change", optionChanged);
 function optionChanged() {
     let sub = d3.select('#selDataset').node().value
 
+    // d3.event.preventDefault();
+
     d3.json('samples.json').then(data => {
         var demo = data.metadata.filter(obj => obj.id == sub)[0];
         var info = d3.select('#sample-metadata');
@@ -35,12 +37,47 @@ function optionChanged() {
     
     HoriBar();
     BubbleBar();
+    washGauge();
 }
+
+function washGauge() {
+    let sub = d3.select('#selDataset').node().value
+
+    d3.json('samples.json').then(data => {
+        var Gauge = data.metadata.filter(obj => obj.id == sub)[0];
+        var gag = d3.select('#gauge');
+        gag.html("")
+
+        var value = Gauge.wfreq
+
+        var data = [
+            {
+                domain: { x: [0, 9], y: [0, 9] },
+                value: value,
+                title: { text: 'Scrubs per Week'},
+                type: "indicator",
+                mode: "gauge+number"
+            }
+        ]
+        
+        var layout = {
+            width: 600,
+            height: 500,
+            margin: {
+                t: 0,
+                b: 0,
+            },            
+        };
+
+        Plotly.newPlot('gauge', data, layout)
+
+})
+
+}
+
 
 function HoriBar() {
     let sub = d3.select('#selDataset').node().value
-
-    d3.event.preventDefault();
 
     d3.json('samples.json').then(data => {
         var hori = data.samples.filter(obj => obj.id == sub)[0];
@@ -86,8 +123,6 @@ function HoriBar() {
     
     function BubbleBar() {
         let sub = d3.select('#selDataset').node().value
-    
-        d3.event.preventDefault();
     
         d3.json('samples.json').then(data => {
             var Bubb = data.samples.filter(obj => obj.id == sub)[0];
