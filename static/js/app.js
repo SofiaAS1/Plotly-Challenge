@@ -37,6 +37,7 @@ function optionChanged() {
     
     HoriBar();
     BubbleBar();
+<<<<<<< HEAD
     washGauge();
 }
 
@@ -76,6 +77,10 @@ function washGauge() {
 }
 
 
+=======
+}
+
+>>>>>>> 6417e29fc1d633d68b23d7d4f09922cbc59b39a6
 function HoriBar() {
     let sub = d3.select('#selDataset').node().value
 
