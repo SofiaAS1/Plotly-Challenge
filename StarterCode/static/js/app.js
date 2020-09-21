@@ -20,6 +20,7 @@ init()
 d3.select('#selDataset').on("change", optionChanged);
 d3.select('#selDataset').on('change', HoriBar);
 
+
 function optionChanged() {
     let sub = d3.select('#selDataset').node().value
 
@@ -75,12 +76,60 @@ function HoriBar() {
             b:75,
             }
         }
+
         Plotly.newPlot("bar", data, layout);
+
         })
 
         
     }
     
+    function BubbleBar() {
+        let sub = d3.select('#selDataset').node().value
+    
+        d3.event.preventDefault();
+    
+        d3.json('samples.json').then(data => {
+            var Bubb = data.samples.filter(obj => obj.id == sub)[0];
+            var bub = d3.select('#Bubble');
+            bub.html("")
+    
+            var ids = Bubb.otu_ids;
+            var values = Bubb.sample_values;
+            var otu_labels = Bubb.otu_labels;
+            var max_mark_size = 1250;
+    
+            var trace1 = {
+            x: ids,
+            y: values,
+            text: otu_labels,
+            mode: 'markers',
+            marker: {
+                size: values,
+                sizemode: 'area',
+                sizeref: 2.0 * Math.max(values)/ max_mark_size**2,
+                color: ids,
+                colorscale: 'Jet',
+                cmin: 0,
+                cmax: 50,
+            }
+            }
+    
+            var data = [trace1];
+    
+            var layout = {
+            title: `Test Subject ID No. ${Bubb.id}'s Belly Button Microbes`,
+            showlegend: false,
+            height: 600,
+            width: 1200,
+            }
 
+            Plotly.newPlot("Bubble", data, layout);
 
+            })
+    
+            
+        }
+
+        d3.select('#selDataset').on('change', BubbleBar);
 
