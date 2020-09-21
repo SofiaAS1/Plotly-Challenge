@@ -18,7 +18,6 @@ function init() {
 init()
 
 d3.select('#selDataset').on("change", optionChanged);
-d3.select('#selDataset').on('change', HoriBar);
 
 
 function optionChanged() {
@@ -34,6 +33,8 @@ function optionChanged() {
         })
     })
     
+    HoriBar();
+    BubbleBar();
 }
 
 function HoriBar() {
@@ -81,7 +82,6 @@ function HoriBar() {
 
         })
 
-        
     }
     
     function BubbleBar() {
@@ -97,21 +97,23 @@ function HoriBar() {
             var ids = Bubb.otu_ids;
             var values = Bubb.sample_values;
             var otu_labels = Bubb.otu_labels;
-            var max_mark_size = 1250;
+            var max_mark_size = 160;
     
             var trace1 = {
             x: ids,
             y: values,
             text: otu_labels,
+            hoverinfo: 'text',
+            type: 'scatter',
             mode: 'markers',
             marker: {
                 size: values,
                 sizemode: 'area',
-                sizeref: 2.0 * Math.max(values)/ max_mark_size**2,
+                sizeref: 2.0 * Math.max(...values)/ max_mark_size**2,
                 color: ids,
-                colorscale: 'Jet',
+                colorscale: 'Earth',
                 cmin: 0,
-                cmax: 50,
+                cmax: 4000,
             }
             }
     
@@ -119,6 +121,8 @@ function HoriBar() {
     
             var layout = {
             title: `Test Subject ID No. ${Bubb.id}'s Belly Button Microbes`,
+            xaxis: {title: 'OTU ID'},
+            hovermode: 'closest',
             showlegend: false,
             height: 600,
             width: 1200,
@@ -131,5 +135,5 @@ function HoriBar() {
             
         }
 
-        d3.select('#selDataset').on('change', BubbleBar);
+        
 
