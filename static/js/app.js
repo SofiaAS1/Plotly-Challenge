@@ -37,7 +37,6 @@ function optionChanged() {
     
     HoriBar();
     BubbleBar();
-<<<<<<< HEAD
     washGauge();
 }
 
@@ -57,16 +56,31 @@ function washGauge() {
                 value: value,
                 title: { text: 'Scrubs per Week'},
                 type: "indicator",
-                mode: "gauge+number"
+                mode: "gauge+number",
+                gauge: { 
+                    axis: {range: [null,9]},
+                    steps: [
+                        {range:[0,1], color: 'lightgray'},
+                        {range:[1,2], color: 'gray'},
+                        {range: [2,3], color: 'lightgray'},
+                        {range: [3,4], color: 'gray'},
+                        {range:[4,5], color: 'lightgray'},
+                        {range:[5,6], color: 'gray'},
+                        {range: [6,7], color: 'lightgray'},
+                        {range: [7,8], color: 'gray'},
+                        {range:[8,9], color: 'lightgray'},
+                    ]
+                }
             }
         ]
         
         var layout = {
-            width: 600,
+            title: 'Belly Button Washing Frequency',
+            width: 500,
             height: 500,
             margin: {
-                t: 0,
-                b: 0,
+                t: 75,
+                b: 75,
             },            
         };
 
@@ -77,10 +91,6 @@ function washGauge() {
 }
 
 
-=======
-}
-
->>>>>>> 6417e29fc1d633d68b23d7d4f09922cbc59b39a6
 function HoriBar() {
     let sub = d3.select('#selDataset').node().value
 
