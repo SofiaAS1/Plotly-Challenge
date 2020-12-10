@@ -13,11 +13,11 @@ Dashboard came together in a series of steps, starting with...
 
 1. Used the D3 library to read in samples.json.
 
-2. Displayed the sample metadata, i.e., an individual's demographic information.
+2. Displayed each key-value pair from the metadata JSON object somewhere on the page.
 
 ![id](Images/id.png)
 
-3. Displayed each key-value pair from the metadata JSON object somewhere on the page.
+3. Displayed the sample metadata, i.e., an individual's demographic information.
 
 ![info](Images/info.png)
 
