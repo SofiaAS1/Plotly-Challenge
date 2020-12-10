@@ -14,6 +14,7 @@ Dashboard came together in a series of steps, starting with...
 1. Used the D3 library to read in samples.json.
 
 2. Displayed the sample metadata, i.e., an individual's demographic information.
+
 ![id](Images/id.png)
 
 3. Displayed each key-value pair from the metadata JSON object somewhere on the page.
@@ -48,6 +49,7 @@ Dashboard came together in a series of steps, starting with...
 7. Set up all of the plots to update any time that a new sample is selected.
 
 8. Updated the provided layout beyond the basic template provided to keep my dashboard original.
+
 ![mypage](Images/mypage.png)
 
 9. Deployed the dashboard to GitHub Pages (see link at top).
