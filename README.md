@@ -18,6 +18,7 @@ Dashboard came together in a series of steps, starting with...
 ![id](Images/id.png)
 
 3. Displayed each key-value pair from the metadata JSON object somewhere on the page.
+
 ![info](Images/info.png)
 
 4. Created a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
@@ -27,6 +28,7 @@ Dashboard came together in a series of steps, starting with...
 * Used otu_ids as the labels for the bar chart.
 
 * Used otu_labels as the hovertext for the chart.
+
 ![bar](Images/bar.png)
 
 5. Created a bubble chart that displays each sample.
@@ -44,6 +46,7 @@ Dashboard came together in a series of steps, starting with...
 
 6. Adapted the Gauge Chart from https://plot.ly/javascript/gauge-charts/ to plot the weekly washing frequency of the individual.
 * Modified the gauge code for values ranging from 0 through 9.
+
 ![gaga](Images/gaga.png)
 
 7. Set up all of the plots to update any time that a new sample is selected.
