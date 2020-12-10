@@ -53,6 +53,7 @@ Dashboard came together in a series of steps, starting with...
 
 8. Updated the provided layout beyond the basic template provided to keep my dashboard original.
 
-![mypage](Images/mypage.png)
+![mpg1](Images/mpg1.png)
+![mpg2](Images/mpg2.png)
 
 9. Deployed the dashboard to GitHub Pages (see link at top).
